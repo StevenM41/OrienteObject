@@ -37,8 +37,7 @@ class Product {
     /**
      * @return array;
      * */
-    public function lister(): array
-    {
+    public function lister() {
         $stmt = $this->pdo->query("SELECT * FROM articles");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -47,11 +46,11 @@ class Product {
      * @param int $id
      * @return boolean
      */
-    public function delete(int $id): bool {
+    public function delete(int $id) {
         $stmt = $this->pdo->prepare("DELETE FROM articles WHERE id = ?");
         return $stmt->execute([$id]);
     }
-    public function getArticleById(int $id): array {
+    public function getArticleById(int $id) {
         $stmt = $this->pdo->prepare("SELECT * FROM articles WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
